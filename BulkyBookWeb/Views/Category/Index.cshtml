@@ -4,27 +4,38 @@
     ViewData["Title"] = "Category";
 }
 
-<h1>Categories</h1>
+<div class="container p-3">
+    <div class="row py-4">
+        <div class="col-6">
+            <h1 class="text-primary">Categories</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" asp-controller="Category" asp-action="Create">
+                <i class="bi bi-plus-circle"></i> &nbsp;
+                Create New Category
+            </a>
+        </div>
+    </div>
 
-<table class="table table-bordered table-striped" style="width: 100%">
-    <thead>
-        <tr>
-            <th>Category Name</th>
-            <th>Display Order</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
             <tr>
-                <td width="50%">
-                    @item.Name
-                </td>
-                <td width="30%">
-                    @item.DisplayOrder
-                </td>
+                <th>Category Name</th>
+                <th>Display Order</th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @item.Name
+                    </td>
+                    <td width="30%">
+                        @item.DisplayOrder
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
