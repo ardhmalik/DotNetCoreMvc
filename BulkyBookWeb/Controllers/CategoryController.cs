@@ -20,8 +20,20 @@ public class CategoryController : Controller
         return View(allCategory);
     }
 
+    // GET
     public IActionResult Create()
     {
         return View();
+    }
+
+    // POST
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(Category category)
+    {
+        _dbContext.Categories.Add(category);
+        _dbContext.SaveChanges();
+
+        return RedirectToAction("Index");
     }
 }
