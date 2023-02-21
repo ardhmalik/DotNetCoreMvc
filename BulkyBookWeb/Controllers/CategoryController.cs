@@ -31,9 +31,19 @@ public class CategoryController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Create(Category category)
     {
-        _dbContext.Categories.Add(category);
-        _dbContext.SaveChanges();
+        if (category.Name == category.DisplayOrder.ToString())
+        {
+            ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+        }
 
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            _dbContext.Categories.Add(category);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index"); 
+        }
+
+        return View(category);
     }
 }
