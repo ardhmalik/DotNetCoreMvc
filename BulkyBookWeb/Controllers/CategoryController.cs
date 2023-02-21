@@ -77,7 +77,7 @@ public class CategoryController : Controller
 
         if (ModelState.IsValid)
         {
-            _dbContext.Categories.Add(category);
+            _dbContext.Categories.Update(category);
             _dbContext.SaveChanges();
 
             return RedirectToAction("Index"); 
